@@ -1,8 +1,8 @@
 class Fraction:
     def __init__(self, numerator = 0, denominator = 1):
-        divisor = self.gcd(numerator, denominator)
-        self._numerator = numerator // divisor
-        self._denominator = denominator // divisor
+        # divisor = self.gcd(numerator, denominator)
+        self._numerator = numerator 
+        self._denominator = denominator 
     
     # Getter
     @property
@@ -13,6 +13,7 @@ class Fraction:
     def denominator(self):
         return self._denominator
     
+    # Setter
     @numerator.setter
     def numerator(self, value):
         self._numerator = value
@@ -38,12 +39,13 @@ class Fraction:
         den = self.denominator * other.denominator
         return Fraction(num, den)
     
+    # Subtraction
     def __sub__(self, other):
         num = self.numerator * other.denominator - other.numerator * self.denominator
         den = self.denominator * other.denominator
         return Fraction(num, den)
     
-    # <
+    # Less than (<)
     def __lt__(self, other):
         return self.__cmp__(other) < 0
 
@@ -57,7 +59,11 @@ class Fraction:
         else:
             return 0 # equal
 
-    # TODO: Add division
+    # Division
+    def __truediv__(self, other):
+        num = self.numerator * other.denominator
+        den = self.denominator * other.numerator
+        return Fraction(num, den)
 
     def gcd(n, d):
         gcd = 1
@@ -74,7 +80,7 @@ frac = Fraction(2, 3)
 print(frac)
 
 frac.numerator = 3
-frac.denominator = 0
+frac.denominator = 5
 print(frac)
 
 frac2 = Fraction(4, 5)
@@ -82,3 +88,4 @@ print(f"{frac} * {frac2} = {frac*frac2}")
 print(f"{frac} + {frac2} = {frac+frac2}")
 print(f"{frac} - {frac2} = {frac-frac2}")
 print(f"{frac} < {frac2} = {frac<frac2}")
+print(f"{frac} / {frac2} = {frac/frac2}")
