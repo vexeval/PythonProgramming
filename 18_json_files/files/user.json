@@ -1,0 +1,13 @@
+{
+    "name": "Christian",
+    "age": "idk",
+    "languages": [
+        "Python",
+        "English",
+        "Impala"
+    ],
+    "hello": {
+        "class": "Hello",
+        "message": "Hello"
+    }
+}
