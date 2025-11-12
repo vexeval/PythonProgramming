@@ -42,16 +42,27 @@ with ui.row().classes("w-full"): # gap-10 for spacing
             slider = ui.slider(min=1, max=10, value=5)
             slider.on("update:model-value", lambda: label_slider.set_text(f"Step: {slider.value}"))
 
+def add(a, b):
+    return a + b
+
+resultValue = 0
 # TODO: Add addition
 with ui.row().classes("w-full"): # gap-10 for spacing
     with ui.column().classes("flex-1"):
         with ui.card():
             with ui.row():
+                t1 = 0
+                t2 = 0
                 n1 = ui.number("Number 1", value=0).classes("w-24")
+                n1.on('input', t1)
                 ui.label("+").classes("text-lg")
                 n2 = ui.number("Number 2", value=0).classes("w-24")
+                n2.on('input', t2)
                 ui.label("=").classes("text-lg")
-                result = ui.label("0").classes("text-lg")   
+                result = ui.label("0").classes("text-lg")
+                resultValue = add(t1, t2)
+                result.bind_text_from(resultValue)
+
 
 ui.switch("Dark Mode", on_change=lambda e: ui.dark_mode().enable() if e.value else ui.dark_mode().disable())
 ui.run(title="Simple Layout App") # title

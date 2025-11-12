@@ -1,0 +1,3 @@
+[submodule "24_version_control_subm"]
+	path = 24_version_control_subm
+	url = https://github.com/vexeval/PythonProgramming.git
